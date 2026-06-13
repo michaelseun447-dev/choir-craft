@@ -1,0 +1,17 @@
+fastapi==0.110.0
+uvicorn[standard]==0.27.1
+python-multipart==0.0.9
+librosa==0.11.0
+numpy
+scipy
+demucs==4.0.1
+openai-whisper
+
+# Notes:
+# - demucs and openai-whisper are heavy (download large model weights
+#   on first use, ~100MB-3GB depending on model size). For lighter
+#   deployments, these can be made optional (the API already degrades
+#   gracefully if they're unavailable).
+# - For production, consider running demucs/whisper as separate
+#   background workers (Celery/RQ + Redis) rather than inline in the
+#   request handler, especially on CPU-only servers.
